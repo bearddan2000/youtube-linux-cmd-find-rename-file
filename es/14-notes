@@ -1,0 +1,3 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={};'
+Aquí capturamos y asignamos los resultados del comando find que coinciden con el patrón de cadena de la búsqueda recursiva del directorio actual solo para archivos.

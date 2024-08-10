@@ -1,0 +1,9 @@
+find .
+
+Après le programme find, nous voyons les arguments qui sont passés au programme. Les arguments ou parfois
+appelés indicateurs, sont utilisés dans la programmation pour guider les programmes dans l'exécution de certaines fonctionnalités.
+
+Ici, notre premier argument est un point qui, dans ce contexte, signifie démarrer la recherche dans le
+répertoire ou le dossier actuel si vous préférez. Cette période peut être modifiée pour pointer vers n'importe quel répertoire,
+un conseil serait de toujours utiliser des chemins complets ou absolus.
+Pour la commande find, cela ne fait pas vraiment attention si vous utilisez des chemins absolus ou relatifs, mais si vous

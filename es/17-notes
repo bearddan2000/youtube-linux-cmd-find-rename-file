@@ -1,0 +1,7 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+echo simplemente imprime el valor que tiene x.
+A partir de los resultados de este comando, enviamos la cadena al comando sed.
+En los scripts de Linux, sed se usa generalmente con archivos, pero en realidad sed se puede usar con archivos o cadenas. Con los resultados del primer comando podemos manipular la cadena.
+Este comando sed sustituye todas las apariciones de java por groovy. Algunos puntos aquí: sed usa la expresión regular antes mencionada entre '/', por lo que si necesita un patrón de cadena en lugar de una sola cadena, asegúrese de escapar los caracteres especiales de expresión regular. Otro punto, tenga cuidado con las cadenas que contienen '/', estas también deben escaparse.

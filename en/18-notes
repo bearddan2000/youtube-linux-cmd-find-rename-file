@@ -1,0 +1,12 @@
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+In order to get a new name we need to use a subshell, which simply means we use linux commands to 
+output a single string that will be substituded into a move command. There are at least two ways to 
+assign the results of a command(s). We have already seen one way, 
+through an user defined variable: x={}. 
+
+The second way to use the results is to use a subshell: $(echo $x | sed 's/${old}/${new}/g').
+This subshell uses 2 commands "piping" the output of the first command to the second as input, 
+this results in a single string.
+

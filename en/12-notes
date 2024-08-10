@@ -1,0 +1,7 @@
+find . -type f -name "*${old}"
+
+If you will recall we mentioned find is a command that will recursively search for a string pattern. 
+Why do we say "string pattern" and not just "string"? Good question, a pattern suggest we are not 
+looking for an exact match but a partial match. A partial match as indicted by * 
+simply says anything that ends with the string, $old in this case. This gets into another concept 
+called regular expressions, but this is outside the scope of this video.

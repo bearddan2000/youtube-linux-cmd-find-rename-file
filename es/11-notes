@@ -1,0 +1,3 @@
+find . -type f
+
+A continuación, vemos -type f, que significa buscar solo archivos; sin embargo, podemos buscar carpetas haciendo

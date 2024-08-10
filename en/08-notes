@@ -1,0 +1,14 @@
+local old=$1
+local new=$2
+
+Now may be a good place to talk about function vs global variables, briefly. Function variables
+should only be usable within the function in which it was defined. In order for code to be reusable
+, functions should be atomic; there should be an ability to opperate on its own. 
+
+So in the spirit of atomany we see the first instence in the keyword "local"; we only want these 
+variables to be accessable from inside the function. Without this keyword we could access and 
+possibly change the values of these variables making errors harder to find.
+
+In shell scripting when we see "$" we assume that this is varriables, yet the numbers may be odd.
+When scripting we reference parameters by position not name, so $1 means the first parameter passed.
+Counting placements of parameters start at 1 not 0.

@@ -1,0 +1,10 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+echo druckt einfach den Wert aus, der von x gehalten wird.
+Von den Ergebnissen dieses Befehls leiten wir die Zeichenfolge an den sed-Befehl weiter.
+In Linux-Skripten wird sed normalerweise mit Dateien verwendet, aber in Wirklichkeit kann sed sowohl mit Dateien als auch mit Zeichenfolgen verwendet werden. Mit den Ergebnissen des ersten Befehls können wir die Zeichenfolge manipulieren.
+Dieser sed-Befehl ersetzt alle Vorkommen von Java durch Groovy. Ein paar Punkte hier: sed verwendet den
+oben erwähnten regulären Ausdruck zwischen '/'. Wenn Sie also ein Zeichenfolgenmuster anstelle einer
+einzelnen Zeichenfolge benötigen, achten Sie darauf, reguläre Ausdrücke mit Sonderzeichen zu maskieren. Ein weiterer Punkt: Seien Sie vorsichtig mit
+Zeichenfolgen, die '/' enthalten, auch diese müssen maskiert werden.

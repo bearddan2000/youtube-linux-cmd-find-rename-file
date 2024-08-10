@@ -1,0 +1,4 @@
+The first line "#!/usr/bin/env bash" may at first look strange over the traditional 
+"#!/usr/bin/bash". The traditional sha bang assumes that the bash program is where it should be. 
+This line in the script does not this assumption instead it says the bash program is somewhere in 
+the $PATH.

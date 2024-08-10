@@ -1,0 +1,11 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+Para obtener un nuevo nombre, necesitamos usar un sub-shell, lo que simplemente significa que usamos comandos de Linux para
+generar una sola cadena que será sustituida en un comando de movimiento. Hay al menos dos formas de
+asignar los resultados de un comando(s). Ya hemos visto una forma,
+a través de una variable definida por el usuario: x={}.
+
+La segunda forma de usar los resultados es usar un sub-shell: $(echo $x | sed 's/${old}/${new}/g').
+Este sub-shell usa 2 comandos que "canalizan" la salida del primer comando al segundo como entrada,
+esto da como resultado una sola cadena.

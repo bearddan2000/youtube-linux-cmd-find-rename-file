@@ -1,0 +1,4 @@
+find . -type f
+
+Next we see -type f which means look for files only however we can look for folders by doing 
+-type d.

@@ -1,0 +1,3 @@
+find ist ein Linux-Befehl, der einen Ordner und seine
+untergeordneten Verzeichnisse rekursiv nach einem Zeichenfolgenmuster durchsucht. Dies ist eine bevorzugte
+Suchmethode, da es sich dabei um eine Thread-Ausführung der Suche zu handeln scheint.

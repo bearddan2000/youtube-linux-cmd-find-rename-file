@@ -1,0 +1,13 @@
+find . -type f -name "*${old}" -execdir sh -c
+
+Execdir ist nicht nur ein Flag, sondern auch ein eigenständiger Befehl. Das heißt, sh -c sind Argumente für
+-execdir, die ihm sagen, welche Shell ausgeführt werden soll. Ironischerweise ist sh die Borne-Shell, während dem Skript gesagt wird, dass es bash verwenden soll: #!/usr/bin/env bash.
+Wie ist das möglich?
+
+1. Borne ist in den meisten Linux-Distributionen installiert, aber bash ist hauptsächlich nur für Debian. Nicht alle
+Linux-Systeme sind gleich, dieses Thema der Distributionen und Shells geht über den Rahmen dieses Videos hinaus.
+
+2. mv-, echo- und sed-Befehle sind sowohl in Borne- als auch in Bash-Shells enthalten. Beide Shells können diese Befehle lesen und
+ausführen.
+
+-c ist ein Shell-Flag borne\bash, das ihm sagt, dass die folgende Zeichenfolge ausgeführt werden soll, als ob sie eingegeben worden wäre.

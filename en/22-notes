@@ -1,0 +1,11 @@
+while getopts ":ud" opts; do
+  case $opts in
+    u)
+      rename "java" "groovy" ;;
+    d)
+      rename "groovy" "java" ;;
+  esac
+done
+
+case works the same as in most programming language, based on the option passed we call the same
+function.

@@ -1,0 +1,4 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+Schließlich erreichen wir das Ende unseres Find-Befehls \;. Wie wir gesehen haben, arbeitet Find rekursiv, daher ist \;
+die Abbruchbedingung.

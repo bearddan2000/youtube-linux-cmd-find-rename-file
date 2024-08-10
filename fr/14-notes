@@ -1,0 +1,14 @@
+find . -type f -name "*${old}" -execdir sh -c
+
+Execdir n'est pas seulement un indicateur mais aussi une commande à part entière. Cela dit, sh -c sont des arguments pour
+-execdir lui indiquant quel shell exécuter. Ironiquement, sh est le shell de borne alors que le script
+est invité à utiliser bash : #!/usr/bin/env bash.
+Comment est-ce possible ?
+
+1. Borne est installé dans la plupart des distributions Linux, mais bash est principalement destiné à Debian uniquement. Tous les
+systèmes Linux ne sont pas identiques, ce sujet des distributions et des shells dépasse le cadre de cette vidéo.
+
+2. Les commandes mv, echo et sed sont incluses dans les shells borne et bash. Les deux shells peuvent lire et
+exécuter ces commandes.
+
+Le -c est un indicateur de shell borne\bash pour lui dire d'exécuter la chaîne suivante comme si elle était tapée.

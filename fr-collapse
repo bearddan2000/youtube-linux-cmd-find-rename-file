@@ -1,0 +1,229 @@
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/00-notes ==
+Souvent, lorsque nous traitons des fichiers informatiques, nous constatons que
+nous pouvons avoir besoin de renommer certains fichiers tout en laissant d'autres fichiers
+inchangés.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/01-notes ==
+Aujourd'hui, je voudrais démontrer une technique que j'ai trouvée
+sur stackflow.com. J'ai une formation en informatique
+donc je suis plus à l'aise avec Linux et je vais donc démontrer
+en utilisant une commande find, cependant, comme Microsoft a développé
+Powershell qui fait une grande partie de ce que fait ce script ;
+cette technique peut également être possible avec cette technologie.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/02-notes ==
+find est une commande Linux qui recherche de manière récursive un
+dossier et ses répertoires enfants pour un modèle de chaîne. C'est une façon préférée de
+rechercher car elle semble être une exécution threadée de la recherche.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/03-notes ==
+Le threading est juste une façon sophistiquée d'exécuter un programme
+de manière simultanée, ou plus simplement, nous exécutons un morceau de programmation
+de manière répétée avec une condition d'arrêt. Comme la vidéo d'aujourd'hui ne porte pas
+sur le threading, nous pouvons utiliser cette définition simplifiée.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/04-notes ==
+Comme find est une commande qui agit sur la récursivité,
+il faut faire attention à ne rechercher que les dossiers que nous souhaitons, donc par exemple, il serait imprudent d'utiliser
+cette technique sur l'ensemble du système de fichiers.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/05-notes ==
+Voyons donc ce simple script :
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/06-notes ==
+La première ligne "#!/usr/bin/env bash" peut à première vue sembler étrange par rapport à la
+traditionnelle "#!/usr/bin/bash". Le sha bang traditionnel suppose que le programme bash est là où il devrait être.
+Cette ligne dans le script ne fait pas cette supposition, mais indique que le programme bash se trouve quelque part dans
+le $PATH.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/07-notes ==
+function rename()
+
+Pour créer une commande ou un morceau de code réutilisable, nous créons des fonctions. Voici comment une
+fonction de script est écrite. Dans les scripts shell, les fonctions fonctionnent différemment de la programmation
+normale. Une fonction, comme son nom l'indique, renvoie une valeur. Cependant, dans les scripts, les fonctions agissent
+plus comme des sous-routines dans la mesure où elles ne renvoient vraiment rien.
+
+D'autres différences peuvent être observées dans la façon dont les valeurs sont transmises à la fonction. En programmation, nous avons tendance à
+lister les paramètres près du nom de la fonction, mais nous verrons bientôt que les paramètres sont implicites au lieu d'être
+explicites.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/08-notes ==
+local old=$1
+local new=$2
+
+Maintenant, il est peut-être temps de parler brièvement des variables de fonction et des variables globales. Les variables de fonction
+ne doivent être utilisables que dans la fonction dans laquelle elles ont été définies. Pour que le code soit réutilisable, les fonctions
+doivent être atomiques ; elles doivent pouvoir fonctionner de manière autonome.
+
+Ainsi, dans un esprit d'autonomie, nous voyons la première instance dans le mot-clé "local" ; nous voulons seulement que ces
+variables soient accessibles depuis l'intérieur de la fonction. Sans ce mot-clé, nous pourrions accéder et
+éventuellement modifier les valeurs de ces variables, ce qui rendrait les erreurs plus difficiles à trouver.
+
+Dans les scripts shell, lorsque nous voyons "$", nous supposons qu'il s'agit de variables, mais les nombres peuvent être impairs.
+Lorsque nous créons des scripts, nous référençons les paramètres par position et non par nom, donc $1 signifie le premier paramètre passé.
+Le comptage des emplacements des paramètres commence à 1 et non à 0.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/09-notes ==
+find
+
+Dans la ligne suivante, nous voyons la commande réelle. find a déjà été identifié, mais pour réitérer,
+il s'agit d'un programme qui utilise des threads pour rechercher de manière récursive une chaîne ou un motif littéral.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/10-notes ==
+find .
+
+Après le programme find, nous voyons les arguments qui sont passés au programme. Les arguments ou parfois
+appelés indicateurs, sont utilisés dans la programmation pour guider les programmes dans l'exécution de certaines fonctionnalités.
+
+Ici, notre premier argument est un point qui, dans ce contexte, signifie démarrer la recherche dans le
+répertoire ou le dossier actuel si vous préférez. Cette période peut être modifiée pour pointer vers n'importe quel répertoire,
+un conseil serait de toujours utiliser des chemins complets ou absolus.
+Pour la commande find, cela ne fait pas vraiment attention si vous utilisez des chemins absolus ou relatifs, mais si vous
+utilisez un gros fichier de script, c'est juste plus lisible.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/11-notes ==
+find . -type f
+
+Ensuite, nous voyons -type f qui signifie rechercher uniquement des fichiers, mais nous pouvons rechercher des dossiers en faisant
+-type d.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/12-notes ==
+find . -type f -name "*${old}"
+
+Si vous vous souvenez, nous avons mentionné que find est une commande qui recherche de manière récursive un modèle de chaîne.
+Pourquoi dit-on "modèle de chaîne" et pas seulement "chaîne" ? Bonne question, un modèle
+suggérons que nous ne recherchons pas
+une correspondance exacte mais une correspondance partielle. Une correspondance partielle comme indiquée par *
+dit simplement tout ce qui se termine par la chaîne, $old dans ce cas. Cela entre dans un autre concept
+appelé expressions régulières, mais cela sort du cadre de cette vidéo.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/13-notes ==
+find . -type f -name "*${old}" -execdir
+
+C'est là que nous trouvons la puissance de cette commande avec l'indicateur -execdir.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/14-notes ==
+find . -type f -name "*${old}" -execdir sh -c
+
+Execdir n'est pas seulement un indicateur mais aussi une commande à part entière. Cela dit, sh -c sont des arguments pour
+-execdir lui indiquant quel shell exécuter. Ironiquement, sh est le shell de borne alors que le script
+est invité à utiliser bash : #!/usr/bin/env bash.
+Comment est-ce possible ?
+
+1. Borne est installé dans la plupart des distributions Linux, mais bash est principalement destiné à Debian uniquement. Tous les
+systèmes Linux ne sont pas identiques, ce sujet des distributions et des shells dépasse le cadre de cette vidéo.
+
+2. Les commandes mv, echo et sed sont incluses dans les shells borne et bash. Les deux shells peuvent lire et
+exécuter ces commandes.
+
+Le -c est un indicateur de shell borne\bash pour lui dire d'exécuter la chaîne suivante comme si elle était tapée.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/15-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+
+Une astuce intéressante que j'ai apprise en écrivant des fichiers Docker est la barre oblique inverse. Cela vous permet d'écrire un code plus
+lisible en indiquant que nous écrivons un exécutable sur une seule ligne, mais qu'il y aura plusieurs lignes.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/16-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+'x={};'
+Ici, nous capturons et attribuons les résultats de la commande find qui correspondent au modèle de chaîne de la
+recherche récursive du répertoire actuel pour les fichiers uniquement.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/17-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x'
+Nous utilisons les résultats capturés comme variable dans la commande mv. La commande mv sous Linux a deux utilisations ;
+la première pour déplacer le pointeur de fichier d'un répertoire à un autre et la seconde pour renommer
+le fichier/répertoire, ce que nous faisons ici.
+Cependant, ce n'est que la moitié de la commande, nous avons encore besoin d'un nom pour renommer ce fichier.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/18-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+Pour obtenir un nouveau nom, nous devons utiliser un sous-shell, ce qui signifie simplement que nous utilisons des commandes Linux pour
+sortir une chaîne unique qui sera substituée dans une commande de déplacement. Il existe au moins deux façons
+d'assigner les résultats d'une ou plusieurs commandes. Nous avons déjà vu une façon,
+via une variable définie par l'utilisateur : x={}.
+
+La deuxième façon d'utiliser les résultats est d'utiliser un sous-shell : $(echo $x | sed 's/${old}/${new}/g').
+Ce sous-shell utilise 2 commandes qui "transfèrent" la sortie de la première commande vers la seconde en tant qu'entrée,
+ce qui donne une chaîne unique.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/19-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+echo imprime simplement la valeur contenue par x.
+À partir des résultats de cette commande, nous transmettons la chaîne à la commande sed.
+Dans les scripts Linux, sed est généralement utilisé avec des fichiers, mais en réalité, sed peut être utilisé avec des fichiers
+ou des chaînes. Avec les résultats de la première commande, nous pouvons manipuler la chaîne.
+Cette commande sed remplace toutes les occurrences de java par groovy. Quelques points ici, sed utilise l'expression régulière
+mentionnée ci-dessus entre '/' donc si vous avez besoin d'un modèle de chaîne au lieu
+d'une seule chaîne, assurez-vous d'échapper les caractères spéciaux regex. Autre point, soyez prudent avec les
+chaînes qui contiennent '/', elles aussi doivent être échappées.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/20-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+Enfin, nous arrivons à la fin de notre commande find \;. Comme nous l'avons vu, find fonctionne sur la récursivité donc \;
+est la condition d'arrêt.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/21-notes ==
+while getopts ":ud" opts; do
+...
+done
+
+Pour revenir aux principes SOLID, nous pouvons définir des indicateurs pour le fichier de script lui-même. Si
+l'on est familier avec la programmation, "while" est considéré comme un opérateur contrôlé par flux ; le reste d'entre nous
+comprendra qu'il se répète à moins qu'une condition ne soit remplie. La ou les conditions pour le "while" sont
+soit "u" soit "d". getopts signifie "get options" vraisemblablement à partir de l'appel de fichier et attribue
+à une variable "opts".
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/22-notes ==
+while getopts ":ud" opts; do
+case $opts in
+u)
+rename "java" "groovy" ;;
+d)
+rename "groovy" "java" ;;
+esac
+done
+
+case fonctionne de la même manière que dans la plupart des langages de programmation, en fonction
+sur l'option passée, nous appelons la même
+fonction.
+=====

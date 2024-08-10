@@ -1,0 +1,9 @@
+function rename()
+
+Pour créer une commande ou un morceau de code réutilisable, nous créons des fonctions. Voici comment une
+fonction de script est écrite. Dans les scripts shell, les fonctions fonctionnent différemment de la programmation
+normale. Une fonction, comme son nom l'indique, renvoie une valeur. Cependant, dans les scripts, les fonctions agissent
+plus comme des sous-routines dans la mesure où elles ne renvoient vraiment rien.
+
+D'autres différences peuvent être observées dans la façon dont les valeurs sont transmises à la fonction. En programmation, nous avons tendance à
+lister les paramètres près du nom de la fonction, mais nous verrons bientôt que les paramètres sont implicites au lieu d'être

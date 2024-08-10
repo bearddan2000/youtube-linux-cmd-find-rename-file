@@ -1,0 +1,8 @@
+function rename()
+
+Um einen wiederverwendbaren Befehl oder Codeabschnitt zu erstellen, erstellen wir Funktionen. So wird eine
+Skriptfunktion geschrieben. Beim Shell-Skripting funktionieren Funktionen anders als beim
+normalen Programmieren. Eine Funktion gibt, wie der Name schon sagt, einen Wert zurück. Beim Skripting verhalten sich Funktionen jedoch
+eher wie Unterprogramme, da sie eigentlich nichts zurückgeben.
+
+Weitere Unterschiede sind darin zu erkennen, wie Werte an die Funktion übergeben werden. Beim Programmieren neigen wir dazu,

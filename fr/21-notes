@@ -1,0 +1,8 @@
+while getopts ":ud" opts; do
+...
+done
+
+Pour revenir aux principes SOLID, nous pouvons définir des indicateurs pour le fichier de script lui-même. Si
+l'on est familier avec la programmation, "while" est considéré comme un opérateur contrôlé par flux ; le reste d'entre nous
+comprendra qu'il se répète à moins qu'une condition ne soit remplie. La ou les conditions pour le "while" sont
+soit "u" soit "d". getopts signifie "get options" vraisemblablement à partir de l'appel de fichier et attribue

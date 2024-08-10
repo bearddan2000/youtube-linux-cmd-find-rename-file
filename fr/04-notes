@@ -1,0 +1,2 @@
+Comme find est une commande qui agit sur la récursivité,
+il faut faire attention à ne rechercher que les dossiers que nous souhaitons, donc par exemple, il serait imprudent d'utiliser

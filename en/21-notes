@@ -1,0 +1,9 @@
+while getopts ":ud" opts; do
+    ...
+done
+
+Getting back to SOLID principles we can define flages for the scripting file itself. If
+one is familar with programming "while" is considered a flow controled operator; the rest of us
+will understand that it repeats unless a condition is met. The condition(s) for the "while" is 
+either "u" or "d". getopts stands for "get options" presumably from the file call and assigns
+to a variable "opts".

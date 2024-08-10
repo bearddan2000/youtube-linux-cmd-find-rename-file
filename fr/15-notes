@@ -1,0 +1,4 @@
+find . -type f -name "*${old}" -execdir sh -c \
+
+Une astuce intéressante que j'ai apprise en écrivant des fichiers Docker est la barre oblique inverse. Cela vous permet d'écrire un code plus
+lisible en indiquant que nous écrivons un exécutable sur une seule ligne, mais qu'il y aura plusieurs lignes.

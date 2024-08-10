@@ -1,0 +1,4 @@
+Threading is just a fancy way of executing a program
+concurrently, or simply put we exeucte a piece of programming
+repeatedly with a stop condition. As today's video is not
+about threading, we can use this simplified definion.

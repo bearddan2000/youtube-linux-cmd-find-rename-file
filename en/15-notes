@@ -1,0 +1,4 @@
+find . -type f -name "*${old}" -execdir sh -c \
+
+A nice trick which I learned writting docker files is the backslash. This lets you write more 
+readible code saying we are writting a single line executable but there will be multiple lines.

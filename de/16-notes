@@ -1,0 +1,3 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={};'
+Hier erfassen und weisen wir die Ergebnisse des Find-Befehls zu, die dem Zeichenfolgenmuster aus der rekursiven Suche des aktuellen Verzeichnisses nur nach Dateien entsprechen.

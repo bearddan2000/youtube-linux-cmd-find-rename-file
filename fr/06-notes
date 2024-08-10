@@ -1,0 +1,3 @@
+La première ligne "#!/usr/bin/env bash" peut à première vue sembler étrange par rapport à la
+traditionnelle "#!/usr/bin/bash". Le sha bang traditionnel suppose que le programme bash est là où il devrait être.
+Cette ligne dans le script ne fait pas cette supposition, mais indique que le programme bash se trouve quelque part dans

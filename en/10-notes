@@ -1,0 +1,10 @@
+find .
+
+After the find program we see arguments that are passed to the program. Arguments or sometimes 
+called flags, are used in programming to provide guidence to programs to execute certain features.
+
+Here our first argument is a period which, in this context, means start are search in the current 
+directory or folder if you prefer. This period can be changed to point at any directory, 
+a tip would be always use full or absolute paths. 
+For the find command it really doesn't care if you use absolute or relative paths but if you are 
+using a large script file its just more readible. 

@@ -1,0 +1,234 @@
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/00-notes ==
+Often when dealing with computer files we find that
+we may need to rename certain files while leaving other files
+unchanged.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/01-notes ==
+Today I would like to demonstrate a technique I found
+on stackflow.com My background is in computer science
+so I am most comfortable using Linux and so will be demonstrating
+using a find command however as Microsoft has developed
+Powershell which does much of what this script does; 
+this technique may be possible in that technology as well.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/02-notes ==
+find is a Linux command that recursively searches a folder and its
+children directories for a string pattern. This is a prefered way of
+search as it seems to be a threaded execution of searching.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/03-notes ==
+Threading is just a fancy way of executing a program
+concurrently, or simply put we exeucte a piece of programming
+repeatedly with a stop condition. As today's video is not
+about threading, we can use this simplified definion.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/04-notes ==
+As find is a command acts on recursion some
+care must be taken so as to only search folders we intend, so for example it would be unwise to 
+use this technique on the whole file system.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/05-notes ==
+So lets step through this simple script:
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/06-notes ==
+The first line "#!/usr/bin/env bash" may at first look strange over the traditional 
+"#!/usr/bin/bash". The traditional sha bang assumes that the bash program is where it should be. 
+This line in the script does not this assumption instead it says the bash program is somewhere in 
+the $PATH.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/07-notes ==
+function rename()
+
+To create a reusable command or piece of code we create functions, the following is how a 
+scripting function is written. In shell scripting, functions operate differently than programming 
+normaly. A function, as the name suggests, returns a value. However in scripting, functions act 
+more like subroutines in that they really don't return anything.
+
+Other differences can be seen in how values are passed to the function. In programming, we tend to
+list parameters near the function name, but we will soon see that parameters are implicit instead
+of explicit.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/08-notes ==
+local old=$1
+local new=$2
+
+Now may be a good place to talk about function vs global variables, briefly. Function variables
+should only be usable within the function in which it was defined. In order for code to be reusable
+, functions should be atomic; there should be an ability to opperate on its own. 
+
+So in the spirit of atomany we see the first instence in the keyword "local"; we only want these 
+variables to be accessable from inside the function. Without this keyword we could access and 
+possibly change the values of these variables making errors harder to find.
+
+In shell scripting when we see "$" we assume that this is varriables, yet the numbers may be odd.
+When scripting we reference parameters by position not name, so $1 means the first parameter passed.
+Counting placements of parameters start at 1 not 0.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/09-notes ==
+find
+
+In the next line we see the actual command. find has already been iditified but to reiterate 
+this is a program that uses threads to recursively search for a string or literal pattern.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/10-notes ==
+find .
+
+After the find program we see arguments that are passed to the program. Arguments or sometimes 
+called flags, are used in programming to provide guidence to programs to execute certain features.
+
+Here our first argument is a period which, in this context, means start are search in the current 
+directory or folder if you prefer. This period can be changed to point at any directory, 
+a tip would be always use full or absolute paths. 
+For the find command it really doesn't care if you use absolute or relative paths but if you are 
+using a large script file its just more readible. 
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/11-notes ==
+find . -type f
+
+Next we see -type f which means look for files only however we can look for folders by doing 
+-type d.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/12-notes ==
+find . -type f -name "*${old}"
+
+If you will recall we mentioned find is a command that will recursively search for a string pattern. 
+Why do we say "string pattern" and not just "string"? Good question, a pattern suggest we are not 
+looking for an exact match but a partial match. A partial match as indicted by * 
+simply says anything that ends with the string, $old in this case. This gets into another concept 
+called regular expressions, but this is outside the scope of this video.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/13-notes ==
+find . -type f -name "*${old}" -execdir
+
+This is where we find the power of this command with the flag -execdir.
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/14-notes ==
+find . -type f -name "*${old}" -execdir sh -c
+
+Execdir is not only a flag but also a command in its own right. That said, sh -c are arguments for 
+-execdir telling it which shell to execute. Ironicaly sh is the borne shell whereas the script is 
+told to use bash: #!/usr/bin/env bash. 
+How is this possible?
+
+1. Borne is installed in most Linux distributions, yet bash is primarily for debian only. Not all 
+Linux system are the same, this topic of distributions and shells are beyond the scope of this video.
+
+2. mv, echo, and sed commands are included in both borne and bash shells. Either shell can read and 
+execute these commands.
+
+The -c is a shell flag borne\bash to tell it to execute the following string as if they were typed.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/15-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+
+A nice trick which I learned writting docker files is the backslash. This lets you write more 
+readible code saying we are writting a single line executable but there will be multiple lines.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/16-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={};'
+    
+Here we capture and assign the results of the find command that match the string pattern from the 
+recursive search of the current directory for files only.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/17-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={}; mv $x'
+    
+We use the captured results as a variable in the mv command. The mv command in Linux has two uses; 
+first to actually move the file pointer from one directory to another and second to rename 
+file/directory which is what we are doing here.
+Yet this is only half of the command we still need a name to rename this file.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/18-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+In order to get a new name we need to use a subshell, which simply means we use linux commands to 
+output a single string that will be substituded into a move command. There are at least two ways to 
+assign the results of a command(s). We have already seen one way, 
+through an user defined variable: x={}. 
+
+The second way to use the results is to use a subshell: $(echo $x | sed 's/${old}/${new}/g').
+This subshell uses 2 commands "piping" the output of the first command to the second as input, 
+this results in a single string.
+
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/19-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+echo is simply printing out the value held by x.
+From the results of this command, we pipe the string to the sed command.
+    
+In linux scripting sed is usually used with files, but in reality sed can be used with either files 
+or strings. With the results from the first command we can manipulate the string.
+This sed command is substituting all occurances of java to groovy. A few points here, sed uses the 
+afore mentioned regular expression between '/' so if you need a string pattern instead
+of a single string, make sure to escape regex special characters. Another point, be careful with 
+string that contains '/', these too need to be escaped.
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/20-notes ==
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+    
+Finally, we reach the end of our find command \;. As we have seen find works on recursion so \; 
+is the stopping condition.
+
+
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/21-notes ==
+while getopts ":ud" opts; do
+    ...
+done
+
+Getting back to SOLID principles we can define flages for the scripting file itself. If
+one is familar with programming "while" is considered a flow controled operator; the rest of us
+will understand that it repeats unless a condition is met. The condition(s) for the "while" is 
+either "u" or "d". getopts stands for "get options" presumably from the file call and assigns
+to a variable "opts".
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/22-notes ==
+while getopts ":ud" opts; do
+  case $opts in
+    u)
+      rename "java" "groovy" ;;
+    d)
+      rename "groovy" "java" ;;
+  esac
+done
+
+case works the same as in most programming language, based on the option passed we call the same
+function.
+=====
+

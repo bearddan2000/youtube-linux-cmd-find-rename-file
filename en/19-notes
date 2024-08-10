@@ -1,0 +1,12 @@
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+echo is simply printing out the value held by x.
+From the results of this command, we pipe the string to the sed command.
+    
+In linux scripting sed is usually used with files, but in reality sed can be used with either files 
+or strings. With the results from the first command we can manipulate the string.
+This sed command is substituting all occurances of java to groovy. A few points here, sed uses the 
+afore mentioned regular expression between '/' so if you need a string pattern instead
+of a single string, make sure to escape regex special characters. Another point, be careful with 
+string that contains '/', these too need to be escaped.

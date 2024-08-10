@@ -1,0 +1,13 @@
+local old=$1
+local new=$2
+
+Maintenant, il est peut-être temps de parler brièvement des variables de fonction et des variables globales. Les variables de fonction
+ne doivent être utilisables que dans la fonction dans laquelle elles ont été définies. Pour que le code soit réutilisable, les fonctions
+doivent être atomiques ; elles doivent pouvoir fonctionner de manière autonome.
+
+Ainsi, dans un esprit d'autonomie, nous voyons la première instance dans le mot-clé "local" ; nous voulons seulement que ces
+variables soient accessibles depuis l'intérieur de la fonction. Sans ce mot-clé, nous pourrions accéder et
+éventuellement modifier les valeurs de ces variables, ce qui rendrait les erreurs plus difficiles à trouver.
+
+Dans les scripts shell, lorsque nous voyons "$", nous supposons qu'il s'agit de variables, mais les nombres peuvent être impairs.
+Lorsque nous créons des scripts, nous référençons les paramètres par position et non par nom, donc $1 signifie le premier paramètre passé.

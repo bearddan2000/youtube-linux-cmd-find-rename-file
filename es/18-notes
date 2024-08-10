@@ -1,0 +1,4 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+Finalmente, llegamos al final de nuestro comando find \;. Como hemos visto, find funciona con recursión, por lo que \;
+es la condición de detención.

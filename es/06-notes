@@ -1,0 +1,2 @@
+La primera línea "#!/usr/bin/env bash" puede parecer extraña al principio en comparación con la tradicional
+"#!/usr/bin/bash". El sha bang tradicional asume que el programa bash está donde debería estar.

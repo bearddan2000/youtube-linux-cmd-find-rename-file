@@ -1,0 +1,10 @@
+function rename()
+
+To create a reusable command or piece of code we create functions, the following is how a 
+scripting function is written. In shell scripting, functions operate differently than programming 
+normaly. A function, as the name suggests, returns a value. However in scripting, functions act 
+more like subroutines in that they really don't return anything.
+
+Other differences can be seen in how values are passed to the function. In programming, we tend to
+list parameters near the function name, but we will soon see that parameters are implicit instead
+of explicit.

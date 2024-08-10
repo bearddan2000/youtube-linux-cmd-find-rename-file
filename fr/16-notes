@@ -1,0 +1,4 @@
+find . -type f -name "*${old}" -execdir sh -c \
+'x={};'
+Ici, nous capturons et attribuons les résultats de la commande find qui correspondent au modèle de chaîne de la
+recherche récursive du répertoire actuel pour les fichiers uniquement.

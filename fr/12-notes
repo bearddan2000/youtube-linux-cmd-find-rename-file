@@ -1,0 +1,7 @@
+find . -type f -name "*${old}"
+
+Si vous vous souvenez, nous avons mentionné que find est une commande qui recherche de manière récursive un modèle de chaîne.
+Pourquoi dit-on "modèle de chaîne" et pas seulement "chaîne" ? Bonne question, un modèle
+suggérons que nous ne recherchons pas
+une correspondance exacte mais une correspondance partielle. Une correspondance partielle comme indiquée par *
+dit simplement tout ce qui se termine par la chaîne, $old dans ce cas. Cela entre dans un autre concept

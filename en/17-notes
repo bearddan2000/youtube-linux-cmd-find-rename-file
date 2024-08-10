@@ -1,0 +1,7 @@
+find . -type f -name "*${old}" -execdir sh -c \
+    'x={}; mv $x'
+    
+We use the captured results as a variable in the mv command. The mv command in Linux has two uses; 
+first to actually move the file pointer from one directory to another and second to rename 
+file/directory which is what we are doing here.
+Yet this is only half of the command we still need a name to rename this file.

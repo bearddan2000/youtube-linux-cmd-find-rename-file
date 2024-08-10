@@ -1,0 +1,27 @@
+find . -type f -name "*${old}"
+
+Si recuerda, mencionamos que find es un comando que buscará recursivamente un patrón de cadena. ¿Por qué decimos "patrón de cuerda" y no simplemente "cuerda"? Buena pregunta, un patrón
+Sugerimos que no estamos
+buscando una coincidencia exacta sino una coincidencia parcial. Una coincidencia parcial como la indicada por *
+simplemente dice cualquier cosa que termine con la cadena, $old en este caso. Esto entra en otro concepto llamado expresiones regulares, pero está fuera del alcance de este video.
+
+
+find . -type f -name "*${old}" -execdir
+
+Aquí es donde encontramos el poder de este comando con el indicador -execdir.
+
+
+find . -type f -name "*${old}" -execdir sh -c
+
+Execdir no es solo una bandera, sino también un comando por derecho propio. Dicho esto, sh -c son argumentos para
+-execdir que le indican qué shell ejecutar. Irónicamente, sh es el shell borne, mientras que al script se le indica
+que use bash: #!/usr/bin/env bash.
+¿Cómo es esto posible?
+
+1. Borne está instalado en la mayoría de las distribuciones de Linux, pero bash es principalmente solo para Debian. No todos los
+sistemas Linux son iguales, este tema de distribuciones y shells está más allá del alcance de este video.
+
+2. Los comandos mv, echo y sed están incluidos tanto en los shells borne como bash. Cualquiera de los shells puede leer y
+ejecutar estos comandos.
+
+-c es una bandera del shell borne\bash para indicarle que ejecute la siguiente cadena como si estuviera escrita.

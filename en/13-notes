@@ -1,0 +1,3 @@
+find . -type f -name "*${old}" -execdir
+
+This is where we find the power of this command with the flag -execdir.
