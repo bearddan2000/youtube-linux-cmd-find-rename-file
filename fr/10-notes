@@ -1,3 +1,4 @@
+
 find .
 
 Après le programme find, nous voyons les arguments qui sont passés au programme. Les arguments ou parfois
@@ -7,3 +8,4 @@ Ici, notre premier argument est un point qui, dans ce contexte, signifie démarr
 répertoire ou le dossier actuel si vous préférez. Cette période peut être modifiée pour pointer vers n'importe quel répertoire,
 un conseil serait de toujours utiliser des chemins complets ou absolus.
 Pour la commande find, cela ne fait pas vraiment attention si vous utilisez des chemins absolus ou relatifs, mais si vous
+utilisez un gros fichier de script, c'est tout simplement plus lisible.

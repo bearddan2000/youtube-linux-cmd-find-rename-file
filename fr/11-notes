@@ -1,3 +1,5 @@
+
 find . -type f
 
 Ensuite, nous voyons -type f qui signifie rechercher uniquement des fichiers, mais nous pouvons rechercher des dossiers en faisant
+-type d.

@@ -1,2 +1,4 @@
+
 find . -type f -name "*${old}" -execdir
 
+C'est là que nous trouvons la puissance de cette commande avec l'indicateur -execdir.

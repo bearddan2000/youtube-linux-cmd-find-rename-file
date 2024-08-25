@@ -1,6 +1,8 @@
+
 Aujourd'hui, je voudrais démontrer une technique que j'ai trouvée
 sur stackflow.com. J'ai une formation en informatique
 donc je suis plus à l'aise avec Linux et je vais donc démontrer
 en utilisant une commande find, cependant, comme Microsoft a développé
-Powershell qui fait une grande partie de ce que fait ce script ;
+Powershell, qui fait une grande partie de ce que fait ce script ;
 cette technique peut également être possible avec cette technologie.
+

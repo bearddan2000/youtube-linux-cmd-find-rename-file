@@ -1,3 +1,5 @@
+
 Le threading est juste une façon sophistiquée d'exécuter un programme
 de manière simultanée, ou plus simplement, nous exécutons un morceau de programmation
 de manière répétée avec une condition d'arrêt. Comme la vidéo d'aujourd'hui ne porte pas
+sur le threading, nous pouvons utiliser cette définition simplifiée.

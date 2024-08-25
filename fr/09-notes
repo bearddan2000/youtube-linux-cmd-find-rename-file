@@ -1,3 +1,5 @@
+
 find
 
 Dans la ligne suivante, nous voyons la commande réelle. find a déjà été identifié, mais pour réitérer,
+il s'agit d'un programme qui utilise des threads pour rechercher de manière récursive une chaîne ou un motif littéral.

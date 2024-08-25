@@ -1,0 +1,4 @@
+
+find . -type f -name "*${old}" -execdir
+
+Вот где мы находим силу этой команды с флагом -execdir.
