@@ -1,3 +1,4 @@
-find . -type f -name "*${old}" -execdir sh -c \
 
-Un buen truco que aprendí al escribir archivos de Docker es la barra invertida. Esto te permite escribir un código más legible que indica que estamos escribiendo un ejecutable de una sola línea, pero habrá varias líneas.
+find . -type f -name "*${old}" -execdir
+
+Aquí es donde encontramos el poder de este comando con el indicador -execdir.

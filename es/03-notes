@@ -1,3 +1,4 @@
+
 El subprocesamiento es simplemente una forma elegante de ejecutar un programa
 concurrentemente, o simplemente ejecutamos un fragmento de programación
-repetidamente con una condición de detención. Como el video de hoy no trata
+repetidamente con una condición de detención. Como el video de hoy no trata sobre subprocesamiento, podemos usar esta definición simplificada.

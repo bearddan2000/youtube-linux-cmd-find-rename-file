@@ -1,0 +1,2 @@
+
+Da es sich bei „find“ um einen rekursiven Befehl handelt, muss darauf geachtet werden, dass nur die gewünschten Ordner durchsucht werden. Daher wäre es beispielsweise unklug, diese Technik auf das gesamte Dateisystem anzuwenden.

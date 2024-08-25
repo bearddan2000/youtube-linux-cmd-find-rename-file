@@ -1,0 +1,4 @@
+
+find . -type f -name „*${old}“
+
+Wie Sie sich erinnern, haben wir erwähnt, dass „find“ ein Befehl ist, der rekursiv nach einem Zeichenfolgenmuster sucht. Warum sagen wir „Zeichenfolgenmuster“ und nicht einfach „Zeichenfolge“? Gute Frage, ein Muster sIch schlage vor, dass wir nicht nach einer exakten Übereinstimmung, sondern nach einer teilweisen Übereinstimmung suchen. Eine teilweise Übereinstimmung, wie durch * angezeigt, bedeutet einfach alles, was mit der Zeichenfolge endet, in diesem Fall $old. Dies führt zu einem anderen Konzept, das als reguläre Ausdrücke bezeichnet wird, aber dies liegt außerhalb des Rahmens dieses Videos.

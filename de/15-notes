@@ -1,0 +1,5 @@
+
+find . -type f -name "*${old}" -execdir sh -c \
+
+Ein netter Trick, den ich beim Schreiben von Docker-Dateien gelernt habe, ist der Backslash. Damit können Sie besser lesbaren Code schreiben, der besagt, dass wir eine einzeilige ausführbare Datei schreiben, aber es wird mehrere Zeilen geben.
+

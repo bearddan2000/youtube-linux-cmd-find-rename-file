@@ -1,14 +1,16 @@
+
 local old=$1
 local new=$2
 
 Jetzt ist vielleicht ein guter Zeitpunkt, um kurz über Funktions- und globale Variablen zu sprechen. Funktionsvariablen
 sollten nur innerhalb der Funktion verwendet werden können, in der sie definiert wurden. Damit Code wiederverwendbar ist
-sollten Funktionen atomar sein; sie sollten eigenständig funktionieren können.
+sollten Funktionen atomar sein; sie sollten in der Lage sein, eigenständig zu funktionieren.
 
-Im Sinne der Autonomie sehen wir also die erste Instanz im Schlüsselwort „local“; wir möchten nur, dass diese
+Im Sinne der Atomarität sehen wir also die erste Instanz im Schlüsselwort „local“; wir möchten nur, dass diese
 Variablen innerhalb der Funktion zugänglich sind. Ohne dieses Schlüsselwort könnten wir auf die Werte dieser Variablen zugreifen und
 möglicherweise ändern, wodurch Fehler schwerer zu finden wären.
 
 Wenn wir in Shell-Skripten „$“ sehen, nehmen wir an, dass es sich um Variablen handelt, die Zahlen können jedoch ungerade sein.
 
-Bei Skripten verweisen wir auf Parameter nach Position, nicht nach Namen, daher bedeutet $1 den ersten übergebenen Parameter.
+Beim Skripten verweisen wir auf Parameter nach Position, nicht nach Namen, daher bedeutet $1 den ersten übergebenen Parameter.
+Die Zählung der Parameterplatzierungen beginnt bei 1, nicht bei 0.

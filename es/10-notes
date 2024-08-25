@@ -1,5 +1,7 @@
+
 find .
 
-Después del programa find, vemos los argumentos que se pasan al programa. Los argumentos, o a veces llamados indicadores, se usan en programación para proporcionar una guía a los programas para ejecutar ciertas funciones.
+Después del programa find vemos los argumentos que se pasan al programa. Los argumentos o, a veces, llamados indicadores, se usan en programación para proporcionar una guía a los programas para ejecutar ciertas funciones.
 
-Aquí, nuestro primer argumento es un punto que, en este contexto, significa que se inicia la búsqueda en el directorio o carpeta actual, si lo prefiere. Este período se puede cambiar para que apunte a cualquier directorio. Un consejo sería usar siempre rutas completas o absolutas.
+Aquí nuestro primer argumento es un punto que, en este contexto, significa que se inicia la búsqueda en el directorio o carpeta actual, si lo prefiere. Este período se puede cambiar para que apunte a cualquier directorio. Un consejo sería usar siempre rutas completas o absolutas.
+Para el comando find, realmente no le importa si usa rutas absolutas o relativas, pero si está usando un archivo de script grande, es más legible.

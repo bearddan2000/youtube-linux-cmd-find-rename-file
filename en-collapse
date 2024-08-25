@@ -9,7 +9,7 @@ Today I would like to demonstrate a technique I found
 on stackflow.com My background is in computer science
 so I am most comfortable using Linux and so will be demonstrating
 using a find command however as Microsoft has developed
-Powershell which does much of what this script does; 
+Powershell, which does much of what this script does; 
 this technique may be possible in that technology as well.
 
 =====
@@ -25,7 +25,7 @@ search as it seems to be a threaded execution of searching.
 Threading is just a fancy way of executing a program
 concurrently, or simply put we exeucte a piece of programming
 repeatedly with a stop condition. As today's video is not
-about threading, we can use this simplified definion.
+about threading, we can use this simplified defintion.
 =====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/04-notes ==
@@ -139,8 +139,8 @@ The -c is a shell flag borne\bash to tell it to execute the following string as 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/15-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 
-A nice trick which I learned writting docker files is the backslash. This lets you write more 
-readible code saying we are writting a single line executable but there will be multiple lines.
+A nice trick which I learned writing docker files is the backslash. This lets you write more 
+readible code saying we are writing a single line executable but there will be multiple lines.
 
 =====
 

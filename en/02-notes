@@ -1,3 +1,5 @@
+
 find is a Linux command that recursively searches a folder and its
 children directories for a string pattern. This is a prefered way of
 search as it seems to be a threaded execution of searching.
+

@@ -1,0 +1,4 @@
+
+find . -type f -name "*${old}" -execdir
+
+Hier finden wir die Leistung dieses Befehls mit dem Flag -execdir.

@@ -1,3 +1,4 @@
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/00-notes ==
 A menudo, cuando trabajamos con archivos de computadora, descubrimos que
 podemos necesitar cambiar el nombre de ciertos archivos mientras dejamos otros
 sin cambios.
@@ -15,7 +16,7 @@ esta técnica también puede ser posible en esa tecnología.
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/02-notes ==
 find es un comando de Linux que busca recursivamente una carpeta y sus
-directorios secundarios en busca de un patrón de cadena. Esta es la forma preferida de
+directorios secundarios en busca de un patrón de cadena. Esta es una forma preferida de
 búsqueda, ya que parece ser una ejecución enhebrada de la búsqueda.
 
 =====
@@ -23,8 +24,7 @@ búsqueda, ya que parece ser una ejecución enhebrada de la búsqueda.
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/03-notes ==
 El subprocesamiento es simplemente una forma elegante de ejecutar un programa
 concurrentemente, o simplemente ejecutamos un fragmento de programación
-repetidamente con una condición de detención. Como el video de hoy no trata
-sobre subprocesamiento, podemos usar esta definición simplificada.
+repetidamente con una condición de detención. Como el video de hoy no trata sobre subprocesamiento, podemos usar esta definición simplificada.
 =====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/04-notes ==
@@ -57,11 +57,11 @@ local new=$2
 Ahora puede ser un buen momento para hablar brevemente sobre variables de función y variables globales. Las variables de función
 solo deben poder usarse dentro de la función en la que se definieron. Para que el código sea reutilizable
 las funciones deben ser atómicas; debe haber una capacidad de operar por sí solas.
-Por lo tanto, en el espíritu de autonomía, vemos la primera instancia en la palabra clave "local"; solo queremos que estas
-variables sean accesibles desde dentro de la función. Sin esta palabra clave, podríamos acceder y
-posiblemente cambiar los valores de estas variables, lo que dificultaría la detección de errores.
+
+Entonces, en el espíritu de la atomicidad, vemos la primera instancia en la palabra clave "local"; solo queremos que estas variables sean accesibles desde dentro de la función. Sin esta palabra clave, podríamos acceder y posiblemente cambiar los valores de estas variables, lo que dificultaría la detección de errores.
 
 En los scripts de shell, cuando vemos "$", asumimos que se trata de variables, aunque los números pueden ser impares.
+
 Al hacer scripts, hacemos referencia a los parámetros por posición, no por nombre, por lo que $1 significa el primer parámetro pasado.
 El recuento de ubicaciones de los parámetros comienza en 1, no en 0.
 =====
@@ -69,16 +69,16 @@ El recuento de ubicaciones de los parámetros comienza en 1, no en 0.
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/09-notes ==
 find
 
-En la siguiente línea vemos el comando real. find ya se identificó, pero para reiterar,
+En la siguiente línea vemos el comando real. find ya ha sido identificado, pero para reiterar
 este es un programa que usa subprocesos para buscar recursivamente una cadena o un patrón literal.
 =====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/10-notes ==
 find .
 
-Después del programa find, vemos los argumentos que se pasan al programa. Los argumentos, o a veces llamados indicadores, se usan en programación para proporcionar una guía a los programas para ejecutar ciertas funciones.
+Después del programa find vemos los argumentos que se pasan al programa. Los argumentos o, a veces, llamados indicadores, se usan en programación para proporcionar una guía a los programas para ejecutar ciertas funciones.
 
-Aquí, nuestro primer argumento es un punto que, en este contexto, significa que se inicia la búsqueda en el directorio o carpeta actual, si lo prefiere. Este período se puede cambiar para que apunte a cualquier directorio. Un consejo sería usar siempre rutas completas o absolutas.
+Aquí nuestro primer argumento es un punto que, en este contexto, significa que se inicia la búsqueda en el directorio o carpeta actual, si lo prefiere. Este período se puede cambiar para que apunte a cualquier directorio. Un consejo sería usar siempre rutas completas o absolutas.
 Para el comando find, realmente no le importa si usa rutas absolutas o relativas, pero si está usando un archivo de script grande, es más legible.
 =====
 
@@ -92,19 +92,16 @@ A continuación, vemos -type f, que significa buscar solo archivos; sin embargo,
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/12-notes ==
 find . -type f -name "*${old}"
 
-Si recuerda, mencionamos que find es un comando que buscará recursivamente un patrón de cadena. ¿Por qué decimos "patrón de cuerda" y no simplemente "cuerda"? Buena pregunta, un patrón
-Sugerimos que no estamos
+Si recuerda, mencionamos que find es un comando que buscará recursivamente un patrón de cadena. ¿Por qué decimos "patrón de cuerda" y no simplemente "cuerda"? Buena pregunta, un patrón esSugiero que no estamos
 buscando una coincidencia exacta sino una coincidencia parcial. Una coincidencia parcial como la indicada por *
 simplemente dice cualquier cosa que termine con la cadena, $old en este caso. Esto entra en otro concepto llamado expresiones regulares, pero está fuera del alcance de este video.
-
-====
+=====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/13-notes ==
 find . -type f -name "*${old}" -execdir
 
 Aquí es donde encontramos el poder de este comando con el indicador -execdir.
-
-====
+=====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/14-notes ==
 find . -type f -name "*${old}" -execdir sh -c
@@ -134,6 +131,7 @@ Un buen truco que aprendí al escribir archivos de Docker es la barra invertida.
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/16-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={};'
+
 Aquí capturamos y asignamos los resultados del comando find que coinciden con el patrón de cadena de la búsqueda recursiva del directorio actual solo para archivos.
 
 =====
@@ -141,6 +139,7 @@ Aquí capturamos y asignamos los resultados del comando find que coinciden con e
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/17-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x'
+
 Usamos los resultados capturados como una variable en el comando mv. El comando mv en Linux tiene dos usos;
 primero, mover el puntero del archivo de un directorio a otro y segundo, cambiar el nombre de
 un archivo o directorio, que es lo que estamos haciendo aquí.
@@ -152,13 +151,13 @@ Sin embargo, esta es solo la mitad del comando, todavía necesitamos un nombre p
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
 
-Para obtener un nuevo nombre, necesitamos usar un sub-shell, lo que simplemente significa que usamos comandos de Linux para
-generar una sola cadena que será sustituida en un comando de movimiento. Hay al menos dos formas de
+Para obtener un nuevo nombre, necesitamos usar un subshell, lo que simplemente significa que usamos comandos de Linux para
+generar una sola cadena que se sustituirá en un comando de movimiento. Hay al menos dos formas de
 asignar los resultados de un comando(s). Ya hemos visto una forma,
 a través de una variable definida por el usuario: x={}.
 
-La segunda forma de usar los resultados es usar un sub-shell: $(echo $x | sed 's/${old}/${new}/g').
-Este sub-shell usa 2 comandos que "canalizan" la salida del primer comando al segundo como entrada,
+La segunda forma de usar los resultados es usar un subshell: $(echo $x | sed 's/${old}/${new}/g').
+Este subshell usa 2 comandos que "canalizan" la salida del primer comando al segundo como entrada,
 esto da como resultado una sola cadena.
 
 =====
@@ -169,6 +168,7 @@ find . -type f -name "*${old}" -execdir sh -c \
 
 echo simplemente imprime el valor que tiene x.
 A partir de los resultados de este comando, enviamos la cadena al comando sed.
+
 En los scripts de Linux, sed se usa generalmente con archivos, pero en realidad sed se puede usar con archivos o cadenas. Con los resultados del primer comando podemos manipular la cadena.
 Este comando sed sustituye todas las apariciones de java por groovy. Algunos puntos aquí: sed usa la expresión regular antes mencionada entre '/', por lo que si necesita un patrón de cadena en lugar de una sola cadena, asegúrese de escapar los caracteres especiales de expresión regular. Otro punto, tenga cuidado con las cadenas que contienen '/', estas también deben escaparse.
 
@@ -177,6 +177,7 @@ Este comando sed sustituye todas las apariciones de java por groovy. Algunos pun
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/20-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+
 Finalmente, llegamos al final de nuestro comando find \;. Como hemos visto, find funciona con recursión, por lo que \;
 es la condición de detención.
 
@@ -204,7 +205,6 @@ rename "groovy" "java" ;;
 esac
 done
 
-case funciona igual que en la mayoría de los lenguajes de programación, basado
-En la opción pasada llamamos a la misma
+funciona igual que en la mayoría de los lenguajes de programación: en función de la opción que se pase, llamamos a la misma
 función.
 =====

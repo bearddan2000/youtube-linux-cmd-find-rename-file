@@ -1,3 +1,4 @@
+
 find . -type f -name "*${old}" -execdir sh -c
 
 Execdir is not only a flag but also a command in its own right. That said, sh -c are arguments for 
@@ -12,3 +13,4 @@ Linux system are the same, this topic of distributions and shells are beyond the
 execute these commands.
 
 The -c is a shell flag borne\bash to tell it to execute the following string as if they were typed.
+

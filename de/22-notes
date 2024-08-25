@@ -1,11 +1,3 @@
-while getopts „:ud“ opts; do
-case $opts in
-u)
-rename „java“ „groovy“ ;;
-d)
-rename „groovy“ „java“ ;;
-esac
-done
 
-case funktioniert genauso wie in den meisten Programmiersprachen, basierend
-für die übergebene Option rufen wir die gleiche
+
+Der Fall funktioniert genauso wie in den meisten Programmiersprachen. Basierend auf der übergebenen Option rufen wir dieselbe Funktion auf. 

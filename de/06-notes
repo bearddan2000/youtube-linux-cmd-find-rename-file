@@ -1,2 +1,4 @@
+
 Die erste Zeile „#!/usr/bin/env bash“ sieht im Vergleich zum herkömmlichen „#!/usr/bin/bash“ zunächst vielleicht seltsam aus. Das traditionelle Sha Bang geht davon aus, dass das Bash-Programm dort ist, wo es sein sollte.
 Diese Zeile im Skript geht nicht von dieser Annahme aus, sondern besagt, dass das Bash-Programm irgendwo im
+$PATH ist.

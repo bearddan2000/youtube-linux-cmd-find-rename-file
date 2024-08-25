@@ -7,17 +7,17 @@ bestimmte Dateien umbenennen, während andere unverändert bleiben.
 Heute möchte ich eine Technik demonstrieren, die ich
 auf stackflow.com gefunden habe. Ich komme aus der Informatik,
 daher kenne ich mich mit Linux am besten aus und werde daher
-mit einem Find-Befehl demonstrieren. Da Microsoft jedoch
+mit einem Find-Befehl demonstrieren, da Microsoft jedoch
 Powershell entwickelt hat,
-das vieles von dem macht, was dieses Skript macht,
-ist diese Technik möglicherweise auch mit dieser Technologie möglich.
+das vieles von dem macht, was dieses Skript macht;
+diese Technik ist möglicherweise auch mit dieser Technologie möglich.
 
 =====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/02-notes ==
 find ist ein Linux-Befehl, der einen Ordner und seine
 untergeordneten Verzeichnisse rekursiv nach einem Zeichenfolgenmuster durchsucht. Dies ist eine bevorzugte
-Suchmethode, da es sich dabei um eine Thread-Ausführung der Suche zu handeln scheint.
+Suchmethode, da es sich um eine Thread-Ausführung der Suche zu handeln scheint.
 
 =====
 
@@ -60,15 +60,15 @@ local new=$2
 
 Jetzt ist vielleicht ein guter Zeitpunkt, um kurz über Funktions- und globale Variablen zu sprechen. Funktionsvariablen
 sollten nur innerhalb der Funktion verwendet werden können, in der sie definiert wurden. Damit Code wiederverwendbar ist
-sollten Funktionen atomar sein; sie sollten eigenständig funktionieren können.
+sollten Funktionen atomar sein; sie sollten in der Lage sein, eigenständig zu funktionieren.
 
-Im Sinne der Autonomie sehen wir also die erste Instanz im Schlüsselwort „local“; wir möchten nur, dass diese
+Im Sinne der Atomarität sehen wir also die erste Instanz im Schlüsselwort „local“; wir möchten nur, dass diese
 Variablen innerhalb der Funktion zugänglich sind. Ohne dieses Schlüsselwort könnten wir auf die Werte dieser Variablen zugreifen und
 möglicherweise ändern, wodurch Fehler schwerer zu finden wären.
 
 Wenn wir in Shell-Skripten „$“ sehen, nehmen wir an, dass es sich um Variablen handelt, die Zahlen können jedoch ungerade sein.
 
-Bei Skripten verweisen wir auf Parameter nach Position, nicht nach Namen, daher bedeutet $1 den ersten übergebenen Parameter.
+Beim Skripten verweisen wir auf Parameter nach Position, nicht nach Namen, daher bedeutet $1 den ersten übergebenen Parameter.
 Die Zählung der Parameterplatzierungen beginnt bei 1, nicht bei 0.
 =====
 
@@ -76,23 +76,29 @@ Die Zählung der Parameterplatzierungen beginnt bei 1, nicht bei 0.
 find
 
 In der nächsten Zeile sehen wir den eigentlichen Befehl. find wurde bereits identifiziert, aber um es noch einmal zu wiederholen:
+
 Dies ist ein Programm, das Threads verwendet, um rekursiv nach einem String oder einem wörtlichen Muster zu suchen.
 =====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/10-notes ==
 find .
 
-Nach dem Find-Programm sehen wir Argumente, die an das Programm übergeben werden. Argumente oder manchmal auch Flags genannt, werden in der Programmierung verwendet, um Programmen Anleitungen zur Ausführung bestimmter Funktionen zu geben.
+Nach dem Find-Programm sehen wir Argumente, die an das Programm übergeben werden. Argumente oder manchmal auch Flags genannt, werden in der Programmierung verwendet, um Programmen Anleitungen für die Ausführung bestimmter Funktionen zu geben.
 
 Hier ist unser erstes Argument ein Punkt, der in diesem Kontext bedeutet, dass die Suche im aktuellen
-Verzeichnis oder Ordner gestartet wird, wenn Sie das bevorzugen. Dieser Punkt kann so geändert werden, dass er auf ein beliebiges Verzeichnis verweist. Ein Tipp: Verwenden Sie immer vollständige oder absolute Pfade. Für den Befehl „find“ ist es eigentlich egal, ob Sie absolute oder relative Pfade verwenden, aber wenn Sie eine große Skriptdatei verwenden, ist sie einfach besser lesbar. =====
-== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/11-notes == find . -type f
+Verzeichnis oder Ordner gestartet wird, wenn Sie das bevorzugen. Dieser Punkt kann so geändert werden, dass er auf ein beliebiges Verzeichnis verweist. Ein Tipp: Verwenden Sie immer vollständige oder absolute Pfade. Für den Befehl „find“ ist es eigentlich egal, ob Sie absolute oder relative Pfade verwenden, aber wenn Sie eine große Skriptdatei verwenden, ist sie einfach besser lesbar. 
+=====
 
-Als Nächstes sehen wir -type f, was bedeutet, dass nur nach Dateien gesucht wird. Wir können jedoch auch nach Ordnern suchen, indem wir -type d eingeben. =====
-== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/12-notes == find . -type f -name „*${old}“
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/11-notes ==
+find . -type f
 
-Wie Sie sich erinnern, haben wir erwähnt, dass find ein Befehl ist, der rekursiv nach einem Zeichenfolgenmuster sucht. Warum sagen wir „Zeichenfolgenmuster“ und nicht einfach „Zeichenfolge“? Gute Frage, ein Muster
-schlagen vor, dass wir nicht nach einer exakten Übereinstimmung, sondern nach einer teilweisen Übereinstimmung suchen. Eine teilweise Übereinstimmung, wie durch * angezeigt, bedeutet einfach alles, was mit der Zeichenfolge endet, in diesem Fall $old. Dies führt zu einem anderen Konzept, das reguläre Ausdrücke genannt wird, aber dies liegt außerhalb des Rahmens dieses Videos.
+Als Nächstes sehen wir „-type f“, was bedeutet, dass nur nach Dateien gesucht wird. Wir können jedoch auch nach Ordnern suchen, indem wir „-type d“ eingeben. 
+=====
+
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/12-notes ==
+find . -type f -name „*${old}“
+
+Wie Sie sich erinnern, haben wir erwähnt, dass „find“ ein Befehl ist, der rekursiv nach einem Zeichenfolgenmuster sucht. Warum sagen wir „Zeichenfolgenmuster“ und nicht einfach „Zeichenfolge“? Gute Frage, ein Muster sIch schlage vor, dass wir nicht nach einer exakten Übereinstimmung, sondern nach einer teilweisen Übereinstimmung suchen. Eine teilweise Übereinstimmung, wie durch * angezeigt, bedeutet einfach alles, was mit der Zeichenfolge endet, in diesem Fall $old. Dies führt zu einem anderen Konzept, das als reguläre Ausdrücke bezeichnet wird, aber dies liegt außerhalb des Rahmens dieses Videos.
 =====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/13-notes ==
@@ -128,6 +134,7 @@ Ein netter Trick, den ich beim Schreiben von Docker-Dateien gelernt habe, ist de
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/16-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={};'
+
 Hier erfassen und weisen wir die Ergebnisse des Find-Befehls zu, die dem Zeichenfolgenmuster aus der rekursiven Suche des aktuellen Verzeichnisses nur nach Dateien entsprechen.
 
 =====
@@ -135,8 +142,9 @@ Hier erfassen und weisen wir die Ergebnisse des Find-Befehls zu, die dem Zeichen
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/17-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x'
+
 Wir verwenden die erfassten Ergebnisse als Variable im mv-Befehl. Der mv-Befehl in Linux hat zwei Verwendungszwecke:
-erstens, um den Dateizeiger tatsächlich von einem Verzeichnis in ein anderes zu verschieben, und zweitens, um
+erstens, um den Dateizeiger tatsächlich von einem Verzeichnis in ein anderes zu verschieben und zweitens, um
 Datei/Verzeichnis umzubenennen, was wir hier tun.
 Da dies jedoch nur die Hälfte des Befehls ist, benötigen wir noch einen Namen, um diese Datei umzubenennen.
 
@@ -146,13 +154,13 @@ Da dies jedoch nur die Hälfte des Befehls ist, benötigen wir noch einen Namen,
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
 
-Um einen neuen Namen zu erhalten, müssen wir eine Sub-Shell verwenden, was einfach bedeutet, dass wir Linux-Befehle verwenden, um
-eine einzelne Zeichenfolge auszugeben, die in einen Verschiebebefehl eingesetzt wird. Es gibt mindestens zwei Möglichkeiten,
+Um einen neuen Namen zu erhalten, müssen wir eine Subshell verwenden, was einfach bedeutet, dass wir Linux-Befehle verwenden, um
+eine einzelne Zeichenfolge auszugeben, die durch einen Verschiebebefehl ersetzt wird. Es gibt mindestens zwei Möglichkeiten,
 die Ergebnisse eines Befehls (oder mehrerer Befehle) zuzuweisen. Wir haben bereits eine Möglichkeit gesehen,
 über eine benutzerdefinierte Variable: x={}.
 
-Die zweite Möglichkeit, die Ergebnisse zu verwenden, besteht in der Verwendung einer Sub-Shell: $(echo $x | sed 's/${old}/${new}/g').
-Diese Sub-Shell verwendet 2 Befehle, die die Ausgabe des ersten Befehls als Eingabe an den zweiten „weiterleiten“,
+Die zweite Möglichkeit, die Ergebnisse zu verwenden, ist die Verwendung einer Subshell: $(echo $x | sed 's/${old}/${new}/g').
+Diese Subshell verwendet 2 Befehle, die die Ausgabe des ersten Befehls als Eingabe an den zweiten „weiterleiten“,
 das Ergebnis ist eine einzelne Zeichenfolge.
 
 =====
@@ -163,10 +171,11 @@ find . -type f -name "*${old}" -execdir sh -c \
 
 echo druckt einfach den Wert aus, der von x gehalten wird.
 Von den Ergebnissen dieses Befehls leiten wir die Zeichenfolge an den sed-Befehl weiter.
+
 In Linux-Skripten wird sed normalerweise mit Dateien verwendet, aber in Wirklichkeit kann sed sowohl mit Dateien als auch mit Zeichenfolgen verwendet werden. Mit den Ergebnissen des ersten Befehls können wir die Zeichenfolge manipulieren.
 Dieser sed-Befehl ersetzt alle Vorkommen von Java durch Groovy. Ein paar Punkte hier: sed verwendet den
 oben erwähnten regulären Ausdruck zwischen '/'. Wenn Sie also ein Zeichenfolgenmuster anstelle einer
-einzelnen Zeichenfolge benötigen, achten Sie darauf, reguläre Ausdrücke mit Sonderzeichen zu maskieren. Ein weiterer Punkt: Seien Sie vorsichtig mit
+einzelnen Zeichenfolge benötigen, achten Sie darauf, reguläre Ausdrücke als Sonderzeichen zu maskieren. Ein weiterer Punkt: Seien Sie vorsichtig mit
 Zeichenfolgen, die '/' enthalten, auch diese müssen maskiert werden.
 
 =====
@@ -174,6 +183,7 @@ Zeichenfolgen, die '/' enthalten, auch diese müssen maskiert werden.
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/20-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+
 Schließlich erreichen wir das Ende unseres Find-Befehls \;. Wie wir gesehen haben, arbeitet Find rekursiv, daher ist \;
 die Abbruchbedingung.
 
@@ -184,24 +194,10 @@ while getopts ":ud" opts; do
 ...
 done
 
-Zurück zu den SOLID-Prinzipien können wir Flags für die Skriptdatei selbst definieren. Wenn
-man mit Programmierung vertraut ist, gilt „while“ als flussgesteuerter Operator; der Rest von uns
-wird verstehen, dass er sich wiederholt, bis eine Bedingung erfüllt ist. Die Bedingung(en) für „while“ ist
-entweder „u“ oder „d“. getopts steht für „get options“ (Optionen abrufen), vermutlich aus dem Dateiaufruf, und weist
-einer Variablen „opts“ zu.
+Zurück zu den SOLID-Prinzipien können wir Flags für die Skriptdatei selbst definieren. Wer mit Programmierung vertraut ist, weiß, dass „while“ als flussgesteuerter Operator gilt; der Rest von uns wird verstehen, dass er sich wiederholt, bis eine Bedingung erfüllt ist. Die Bedingung(en) für „while“ ist entweder „u“ oder „d“. getopts steht für „get options“ (Optionen abrufen), vermutlich aus dem Dateiaufruf, und weist einer Variablen „opts“ zu. 
 =====
 
-== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/22-notes ==
-while getopts „:ud“ opts; do
-case $opts in
-u)
-rename „java“ „groovy“ ;;
-d)
-rename „groovy“ „java“ ;;
-esac
-done
+== /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/22-notes == while getopts „:ud“ opts; do case $opts in u) rename „java“ „groovy“ ;; d) rename „groovy“ „java“ ;; esac done
 
-case funktioniert genauso wie in den meisten Programmiersprachen, basierend
-für die übergebene Option rufen wir die gleiche
-Funktion auf.
+Der Fall funktioniert genauso wie in den meisten Programmiersprachen. Basierend auf der übergebenen Option rufen wir dieselbe Funktion auf. 
 =====

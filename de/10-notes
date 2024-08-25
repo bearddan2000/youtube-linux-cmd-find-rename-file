@@ -1,0 +1,7 @@
+
+find .
+
+Nach dem Find-Programm sehen wir Argumente, die an das Programm übergeben werden. Argumente oder manchmal auch Flags genannt, werden in der Programmierung verwendet, um Programmen Anleitungen für die Ausführung bestimmter Funktionen zu geben.
+
+Hier ist unser erstes Argument ein Punkt, der in diesem Kontext bedeutet, dass die Suche im aktuellen
+Verzeichnis oder Ordner gestartet wird, wenn Sie das bevorzugen. Dieser Punkt kann so geändert werden, dass er auf ein beliebiges Verzeichnis verweist. Ein Tipp: Verwenden Sie immer vollständige oder absolute Pfade. Für den Befehl „find“ ist es eigentlich egal, ob Sie absolute oder relative Pfade verwenden, aber wenn Sie eine große Skriptdatei verwenden, ist sie einfach besser lesbar. 

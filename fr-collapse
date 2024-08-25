@@ -9,7 +9,7 @@ Aujourd'hui, je voudrais démontrer une technique que j'ai trouvée
 sur stackflow.com. J'ai une formation en informatique
 donc je suis plus à l'aise avec Linux et je vais donc démontrer
 en utilisant une commande find, cependant, comme Microsoft a développé
-Powershell qui fait une grande partie de ce que fait ce script ;
+Powershell, qui fait une grande partie de ce que fait ce script ;
 cette technique peut également être possible avec cette technologie.
 
 =====
@@ -66,7 +66,7 @@ Maintenant, il est peut-être temps de parler brièvement des variables de fonct
 ne doivent être utilisables que dans la fonction dans laquelle elles ont été définies. Pour que le code soit réutilisable, les fonctions
 doivent être atomiques ; elles doivent pouvoir fonctionner de manière autonome.
 
-Ainsi, dans un esprit d'autonomie, nous voyons la première instance dans le mot-clé "local" ; nous voulons seulement que ces
+Ainsi, dans l'esprit de l'atomicité, nous voyons la première expression dans le mot-clé "local" ; nous voulons seulement que ces
 variables soient accessibles depuis l'intérieur de la fonction. Sans ce mot-clé, nous pourrions accéder et
 éventuellement modifier les valeurs de ces variables, ce qui rendrait les erreurs plus difficiles à trouver.
 
@@ -92,7 +92,7 @@ Ici, notre premier argument est un point qui, dans ce contexte, signifie démarr
 répertoire ou le dossier actuel si vous préférez. Cette période peut être modifiée pour pointer vers n'importe quel répertoire,
 un conseil serait de toujours utiliser des chemins complets ou absolus.
 Pour la commande find, cela ne fait pas vraiment attention si vous utilisez des chemins absolus ou relatifs, mais si vous
-utilisez un gros fichier de script, c'est juste plus lisible.
+utilisez un gros fichier de script, c'est tout simplement plus lisible.
 =====
 
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/11-notes ==
@@ -106,8 +106,7 @@ Ensuite, nous voyons -type f qui signifie rechercher uniquement des fichiers, ma
 find . -type f -name "*${old}"
 
 Si vous vous souvenez, nous avons mentionné que find est une commande qui recherche de manière récursive un modèle de chaîne.
-Pourquoi dit-on "modèle de chaîne" et pas seulement "chaîne" ? Bonne question, un modèle
-suggérons que nous ne recherchons pas
+Pourquoi dit-on "modèle de chaîne" et pas seulement "chaîne" ? Bonne question, un modèle ssuggérez que nous ne recherchons pas
 une correspondance exacte mais une correspondance partielle. Une correspondance partielle comme indiquée par *
 dit simplement tout ce qui se termine par la chaîne, $old dans ce cas. Cela entre dans un autre concept
 appelé expressions régulières, mais cela sort du cadre de cette vidéo.
@@ -148,6 +147,7 @@ lisible en indiquant que nous écrivons un exécutable sur une seule ligne, mais
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/16-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={};'
+
 Ici, nous capturons et attribuons les résultats de la commande find qui correspondent au modèle de chaîne de la
 recherche récursive du répertoire actuel pour les fichiers uniquement.
 
@@ -156,6 +156,7 @@ recherche récursive du répertoire actuel pour les fichiers uniquement.
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/17-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x'
+
 Nous utilisons les résultats capturés comme variable dans la commande mv. La commande mv sous Linux a deux utilisations ;
 la première pour déplacer le pointeur de fichier d'un répertoire à un autre et la seconde pour renommer
 le fichier/répertoire, ce que nous faisons ici.
@@ -183,7 +184,8 @@ find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
 
 echo imprime simplement la valeur contenue par x.
-À partir des résultats de cette commande, nous transmettons la chaîne à la commande sed.
+A partir des résultats de cette commande, nous transmettons la chaîne à la commande sed.
+
 Dans les scripts Linux, sed est généralement utilisé avec des fichiers, mais en réalité, sed peut être utilisé avec des fichiers
 ou des chaînes. Avec les résultats de la première commande, nous pouvons manipuler la chaîne.
 Cette commande sed remplace toutes les occurrences de java par groovy. Quelques points ici, sed utilise l'expression régulière
@@ -196,6 +198,7 @@ chaînes qui contiennent '/', elles aussi doivent être échappées.
 == /home/oem/git/youtube/youtube-linux-cmd-find-rename-file/en/20-notes ==
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+
 Enfin, nous arrivons à la fin de notre commande find \;. Comme nous l'avons vu, find fonctionne sur la récursivité donc \;
 est la condition d'arrêt.
 
@@ -223,7 +226,6 @@ rename "groovy" "java" ;;
 esac
 done
 
-case fonctionne de la même manière que dans la plupart des langages de programmation, en fonction
-sur l'option passée, nous appelons la même
+case fonctionne de la même manière que dans la plupart des langages de programmation, en fonction de l'option passée, nous appelons la même
 fonction.
 =====

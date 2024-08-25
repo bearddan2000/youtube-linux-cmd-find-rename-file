@@ -1,0 +1,4 @@
+
+find . -type f
+
+Als Nächstes sehen wir „-type f“, was bedeutet, dass nur nach Dateien gesucht wird. Wir können jedoch auch nach Ordnern suchen, indem wir „-type d“ eingeben. 

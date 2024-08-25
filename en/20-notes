@@ -1,6 +1,8 @@
+
 find . -type f -name "*${old}" -execdir sh -c \
     'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
     
 Finally, we reach the end of our find command \;. As we have seen find works on recursion so \; 
 is the stopping condition.
+
 

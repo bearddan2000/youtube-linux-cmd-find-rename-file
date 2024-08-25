@@ -1,0 +1,13 @@
+
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')'
+
+Um einen neuen Namen zu erhalten, müssen wir eine Subshell verwenden, was einfach bedeutet, dass wir Linux-Befehle verwenden, um
+eine einzelne Zeichenfolge auszugeben, die durch einen Verschiebebefehl ersetzt wird. Es gibt mindestens zwei Möglichkeiten,
+die Ergebnisse eines Befehls (oder mehrerer Befehle) zuzuweisen. Wir haben bereits eine Möglichkeit gesehen,
+über eine benutzerdefinierte Variable: x={}.
+
+Die zweite Möglichkeit, die Ergebnisse zu verwenden, ist die Verwendung einer Subshell: $(echo $x | sed 's/${old}/${new}/g').
+Diese Subshell verwendet 2 Befehle, die die Ausgabe des ersten Befehls als Eingabe an den zweiten „weiterleiten“,
+das Ergebnis ist eine einzelne Zeichenfolge.
+

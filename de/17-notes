@@ -1,6 +1,9 @@
+
 find . -type f -name "*${old}" -execdir sh -c \
 'x={}; mv $x'
+
 Wir verwenden die erfassten Ergebnisse als Variable im mv-Befehl. Der mv-Befehl in Linux hat zwei Verwendungszwecke:
-erstens, um den Dateizeiger tatsächlich von einem Verzeichnis in ein anderes zu verschieben, und zweitens, um
+erstens, um den Dateizeiger tatsächlich von einem Verzeichnis in ein anderes zu verschieben und zweitens, um
 Datei/Verzeichnis umzubenennen, was wir hier tun.
 Da dies jedoch nur die Hälfte des Befehls ist, benötigen wir noch einen Namen, um diese Datei umzubenennen.
+

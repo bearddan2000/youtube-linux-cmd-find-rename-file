@@ -1,3 +1,4 @@
+
 find . -type f -name "*${old}" -execdir sh -c
 
 Execdir ist nicht nur ein Flag, sondern auch ein eigenständiger Befehl. Das heißt, sh -c sind Argumente für
@@ -11,3 +12,4 @@ Linux-Systeme sind gleich, dieses Thema der Distributionen und Shells geht über
 ausführen.
 
 -c ist ein Shell-Flag borne\bash, das ihm sagt, dass die folgende Zeichenfolge ausgeführt werden soll, als ob sie eingegeben worden wäre.
+

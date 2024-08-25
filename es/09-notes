@@ -1,3 +1,5 @@
+
 find
 
-En la siguiente línea vemos el comando real. find ya se identificó, pero para reiterar,
+En la siguiente línea vemos el comando real. find ya ha sido identificado, pero para reiterar
+este es un programa que usa subprocesos para buscar recursivamente una cadena o un patrón literal.

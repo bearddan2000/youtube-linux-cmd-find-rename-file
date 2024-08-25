@@ -1,3 +1,5 @@
+
 find es un comando de Linux que busca recursivamente una carpeta y sus
-directorios secundarios en busca de un patrón de cadena. Esta es la forma preferida de
+directorios secundarios en busca de un patrón de cadena. Esta es una forma preferida de
 búsqueda, ya que parece ser una ejecución enhebrada de la búsqueda.
+

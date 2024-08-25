@@ -1,5 +1,7 @@
+
 find . -type f -name "*${old}" -execdir sh -c \
     'x={};'
     
 Here we capture and assign the results of the find command that match the string pattern from the 
 recursive search of the current directory for files only.
+

@@ -1,3 +1,4 @@
+
 function rename()
 
 Um einen wiederverwendbaren Befehl oder Codeabschnitt zu erstellen, erstellen wir Funktionen. So wird eine
@@ -6,3 +7,4 @@ normalen Programmieren. Eine Funktion gibt, wie der Name schon sagt, einen Wert 
 eher wie Unterprogramme, da sie eigentlich nichts zurückgeben.
 
 Weitere Unterschiede sind darin zu erkennen, wie Werte an die Funktion übergeben werden. Beim Programmieren neigen wir dazu,
+Parameter in der Nähe des Funktionsnamens aufzulisten, aber wir werden bald sehen, dass Parameter implizit statt explizit sind.

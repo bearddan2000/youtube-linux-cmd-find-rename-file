@@ -1,0 +1,6 @@
+
+while getopts ":ud" opts; do
+...
+done
+
+Zurück zu den SOLID-Prinzipien können wir Flags für die Skriptdatei selbst definieren. Wer mit Programmierung vertraut ist, weiß, dass „while“ als flussgesteuerter Operator gilt; der Rest von uns wird verstehen, dass er sich wiederholt, bis eine Bedingung erfüllt ist. Die Bedingung(en) für „while“ ist entweder „u“ oder „d“. getopts steht für „get options“ (Optionen abrufen), vermutlich aus dem Dateiaufruf, und weist einer Variablen „opts“ zu. 

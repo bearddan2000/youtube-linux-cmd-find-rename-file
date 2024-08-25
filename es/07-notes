@@ -1,4 +1,6 @@
+
 función rename()
 
 Para crear un comando reutilizable o un fragmento de código, creamos funciones. A continuación, se muestra cómo se escribe una función de script. En los scripts de shell, las funciones funcionan de manera diferente a la programación normal. Una función, como sugiere el nombre, devuelve un valor. Sin embargo, en los scripts, las funciones actúan más como subrutinas en el sentido de que realmente no devuelven nada.
 
+Se pueden ver otras diferencias en cómo se pasan los valores a la función. En programación, tendemos a enumerar los parámetros cerca del nombre de la función, pero pronto veremos que los parámetros son implícitos en lugar de explícitos.

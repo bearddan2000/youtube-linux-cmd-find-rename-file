@@ -1,3 +1,16 @@
-find . -type f -name "*${old}" -execdir sh -c \
-'x={};'
-Aquí capturamos y asignamos los resultados del comando find que coinciden con el patrón de cadena de la búsqueda recursiva del directorio actual solo para archivos.
+
+find . -type f -name "*${old}" -execdir sh -c
+
+Execdir no es solo una bandera, sino también un comando por derecho propio. Dicho esto, sh -c son argumentos para
+-execdir que le indican qué shell ejecutar. Irónicamente, sh es el shell borne, mientras que al script se le indica
+que use bash: #!/usr/bin/env bash.
+¿Cómo es esto posible?
+
+1. Borne está instalado en la mayoría de las distribuciones de Linux, pero bash es principalmente solo para Debian. No todos los
+sistemas Linux son iguales, este tema de distribuciones y shells está más allá del alcance de este video.
+
+2. Los comandos mv, echo y sed están incluidos tanto en los shells borne como bash. Cualquiera de los shells puede leer y
+ejecutar estos comandos.
+
+-c es una bandera del shell borne\bash para indicarle que ejecute la siguiente cadena como si estuviera escrita.
+

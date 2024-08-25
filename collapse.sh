@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# espeak -v fr -s 32 -p 20 -f fr/00-notes
+
 function collapse(){
     local lang=$1
     local output="$PWD/${lang}-collapse"
@@ -33,7 +35,7 @@ function expand(){
 
     for x in `find . -type f -name "xx*"`; do
       sed -i '/^==*/d' $x # del deliminator and source name
-      sed -i '1d;$d' $x # del first and last line
+      # sed -i '1d;$d' $x # del first and last line
       mv $x $(echo $x | sed 's/xx//g')
     done
 
@@ -42,6 +44,11 @@ function expand(){
     # remove very last file
     rm -f $output/$offset-notes
 }
-d=$1
-expand $d
-# collapse $d
+while getopts ":ei" opts; do
+  case $opts in
+    e)
+      expand $2 ;;
+    i)
+      collapse $2 ;;
+  esac
+done

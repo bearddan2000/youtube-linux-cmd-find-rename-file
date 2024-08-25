@@ -1,3 +1,6 @@
+
 find
 
 In der nächsten Zeile sehen wir den eigentlichen Befehl. find wurde bereits identifiziert, aber um es noch einmal zu wiederholen:
+
+Dies ist ein Programm, das Threads verwendet, um rekursiv nach einem String oder einem wörtlichen Muster zu suchen.

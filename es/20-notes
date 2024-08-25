@@ -1,11 +1,7 @@
-while getopts ":ud" opts; do
-case $opts in
-u)
-rename "java" "groovy" ;;
-d)
-rename "groovy" "java" ;;
-esac
-done
 
-case funciona igual que en la mayoría de los lenguajes de programación, basado
-En la opción pasada llamamos a la misma
+find . -type f -name "*${old}" -execdir sh -c \
+'x={}; mv $x $(echo $x | sed 's/${old}/${new}/g')' \;
+
+Finalmente, llegamos al final de nuestro comando find \;. Como hemos visto, find funciona con recursión, por lo que \;
+es la condición de detención.
+

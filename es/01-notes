@@ -1,6 +1,8 @@
+
 Hoy me gustaría demostrar una técnica que encontré
 en stackflow.com. Mi formación es en informática,
 por lo que me siento más cómodo usando Linux, así que haré demostraciones
 usando un comando find. Sin embargo, como Microsoft ha desarrollado
 Powershell, que hace mucho de lo que hace este script,
 esta técnica también puede ser posible en esa tecnología.
+
